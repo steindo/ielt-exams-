@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Exercices", href: "/exercises", icon: BookOpen },
     { name: "IELTS Prep", href: "/ielts", icon: GraduationCap },
-    { name: "TOEFL Prep", href: "/toefl", icon: BookOpen },
 ];
 
 export default function Navbar() {
