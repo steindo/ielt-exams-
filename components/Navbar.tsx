@@ -20,8 +20,8 @@ export default function Navbar() {
                     <a href="/exercises/academic" className="flex items-center gap-2 text-amber-600 hover:text-amber-700 transition-colors font-bold">
                         <Crown className="h-4 w-4" /> Premium Harvard/Oxford
                     </a>
-                    <a href="/exercises/official" className="flex items-center gap-2 text-slate-900 hover:text-slate-700 transition-colors font-serif font-bold border-l pl-6 border-slate-300">
-                        <FileText className="h-4 w-4" /> Official Exams
+                    <a href="/course" className="flex items-center gap-2 text-slate-900 hover:text-slate-700 transition-colors font-bold border-l pl-6 border-slate-300">
+                        <BookOpen className="h-4 w-4" /> My Course
                     </a>
                 </div>
             </div>
