@@ -3,7 +3,7 @@ import { Question } from "@/components/ExerciseEngine";
 export interface CourseUnit {
     id: string;
     number: number;
-    title: string; // e.g. "The Man-Made Environment"
+    title: string;
     description: string;
     topics: {
         grammar: string;
@@ -14,60 +14,58 @@ export interface CourseUnit {
         grammar: Question[];
         vocabulary: Question[];
         reading?: { passage: string; questions: Question[] };
+        listening?: { transcript: string; questions: Question[] };
     };
 }
 
-// Initial Skeleton based on standard IELTS Course books (Topics usually cover Environment, Tech, Education, etc.)
-// We will ask the user to rename them.
+// Data extracted from 'output_formatted.docx' - Listening Skills Section
 export const courseUnits: CourseUnit[] = [
     {
         id: "unit-1",
         number: 1,
-        title: "Unit 1: The Man-Made Environment", // Placeholder likely to be correct or close
-        description: "Focus: Tourism, Architecture, and Civil Engineering.",
+        title: "Unit 1: Getting Ready to Listen",
+        description: "Focus: Understanding context, correct spelling, and numbers.",
         topics: {
-            grammar: "Present Perfect vs Past Simple",
-            vocabulary: "Tourism & Travel keywords",
-            skills: ["Reading: Skimming & Scanning", "Listening: Form completion"]
+            grammar: "N/A (Focus on Spelling/Numbers)",
+            vocabulary: "Contextual Keywords (Party, Project, Assignment)",
+            skills: ["Understanding Context", "Correct Spelling", "Writing Numbers"]
         },
         exercises: {
-            grammar: [
-                {
-                    id: "u1-g-1",
-                    type: "MCQ",
-                    question: "How long ___ here?",
-                    options: ["have you lived", "did you live", "do you live", "are you living"],
-                    correctAnswer: 0,
-                    explanation: "Present perfect for unfinished time/states starting in the past."
-                },
-                {
-                    id: "u1-g-2",
-                    type: "GapFill",
-                    question: "I ___ (never/visit) Paris before last year.",
-                    correctAnswer: "had never visited",
-                    explanation: "Past perfect describing an action before another past time."
-                }
-            ],
+            grammar: [],
             vocabulary: [
                 {
-                    id: "u1-v-1",
+                    id: "u1-spell-1",
+                    type: "GapFill",
+                    question: "Listen and spell the name: Mr. Andrew ___.",
+                    correctAnswer: "Peterson",
+                    explanation: "Review the alphabet sounds: P-E-T-E-R-S-O-N."
+                },
+                {
+                    id: "u1-num-1",
                     type: "MCQ",
-                    question: "The city's ___ is famous for its gothic style.",
-                    options: ["architecture", "archaeology", "archive", "agriculture"],
+                    question: "Choose the correct number you hear.",
+                    options: ["15", "50", "52", "62"],
                     correctAnswer: 0,
-                    explanation: "Architecture refers to the style and design of buildings."
+                    explanation: "Distinguish between '-teen' (15) and '-ty' (50) stress patterns."
                 }
             ],
-            reading: {
-                passage: `## Tourism in the 21st Century\n\nTourism has evolved from a luxury for the few to a mass phenomenon. This shift has brought economic benefits but also environmental challenges...`,
+            listening: {
+                transcript: "In Section 1, you might hear a name being spelt out. For example: 'My name is Andrew Peterson. P-E-T-E-R-S-O-N.' You might also hear numbers like phone numbers or prices: 'It costs $15.50'.",
                 questions: [
                     {
-                        id: "u1-r-1",
+                        id: "u1-l-1",
+                        type: "GapFill",
+                        question: "Complete the notes: Name: Mr Andrew ___",
+                        correctAnswer: "Peterson",
+                        explanation: "The speaker spells out P-E-T-E-R-S-O-N."
+                    },
+                    {
+                        id: "u1-l-2",
                         type: "MCQ",
-                        question: "According to the text, what is a negative impact of mass tourism?",
-                        options: ["Economic growth", "Environmental challenges", "Cultural exchange", "Technological advancement"],
-                        correctAnswer: 1,
-                        explanation: "The text explicitly mentions 'environmental challenges'."
+                        question: "What is the price mentioned?",
+                        options: ["$15.50", "$50.50", "$5.15", "$15.15"],
+                        correctAnswer: 0,
+                        explanation: "The speaker clearly says 'Fifteen dollars and fifty cents'."
                     }
                 ]
             }
@@ -76,86 +74,108 @@ export const courseUnits: CourseUnit[] = [
     {
         id: "unit-2",
         number: 2,
-        title: "Unit 2: Education & Employment",
-        description: "Focus: University life, Job market trends.",
+        title: "Unit 2: Following a Conversation",
+        description: "Focus: Identifying speakers, function, and matching items.",
         topics: {
-            grammar: "Future forms (will, going to, present continuous)",
-            vocabulary: "Academic subjects, Employment status",
-            skills: ["Writing: Task 1 (Bar Charts)", "Speaking: Part 2"]
+            grammar: "Questions & Responses",
+            vocabulary: "Opinion adjectives, Functional language",
+            skills: ["Identifying Speakers", "Matching Items", "Completing Notes"]
         },
         exercises: {
-            grammar: [], vocabulary: []
+            grammar: [],
+            vocabulary: [],
+            listening: {
+                transcript: "Speaker A: 'Hi, I'd like to ask about the language course.' Speaker B: 'Certainly. We have classes for all levels. Are you a beginner?' Speaker A: 'No, I have studied for 3 years.'",
+                questions: [
+                    {
+                        id: "u2-l-1",
+                        type: "MCQ",
+                        question: "Who is Speaker A?",
+                        options: ["Student", "Teacher", "Receptionist", "Cleaner"],
+                        correctAnswer: 0,
+                        explanation: "The speaker is asking for information about a course."
+                    },
+                    {
+                        id: "u2-l-2",
+                        type: "MCQ",
+                        question: "How long has Speaker A studied?",
+                        options: ["1 year", "2 years", "3 years", "4 years"],
+                        correctAnswer: 2,
+                        explanation: "Speaker A clearly states 'I have studied for 3 years'."
+                    }
+                ]
+            }
         }
     },
     {
         id: "unit-3",
         number: 3,
-        title: "Unit 3: Health & Lifestyle",
-        description: "Focus: Diet, Exercise, and Medical advances.",
+        title: "Unit 3: Recognising Paraphrase",
+        description: "Focus: Identifying distractors and selecting from a list.",
         topics: {
-            grammar: "Modals of obligation and advice",
-            vocabulary: "Medical terms, Healthy living",
-            skills: ["Reading: True/False/Not Given"]
+            grammar: "Synonyms & Paraphrasing",
+            vocabulary: "Academic synonyms",
+            skills: ["Identifying Distractors", "Selecting from a list"]
         },
         exercises: { grammar: [], vocabulary: [] }
     },
     {
         id: "unit-4",
         number: 4,
-        title: "Unit 4: Art & Culture",
-        description: "Focus: Museums, Music, and Artistic expression.",
+        title: "Unit 4: Places and Directions",
+        description: "Focus: Describing places, following directions, labelling maps.",
         topics: {
-            grammar: "Passive Voice",
-            vocabulary: "Artistic adjectives, Genres",
-            skills: ["Listening: Multiple matching"]
+            grammar: "Prepositions of Place",
+            vocabulary: "Directional verbs (Turn left, Opposite...)",
+            skills: ["Labelling a Map", "Following Directions"]
         },
         exercises: { grammar: [], vocabulary: [] }
     },
     {
         id: "unit-5",
         number: 5,
-        title: "Unit 5: Technology & Science",
-        description: "Focus: AI, Space exploration, Digital revolution.",
+        title: "Unit 5: Listening for Actions",
+        description: "Focus: Mechanical parts, processes, and descriptions.",
         topics: {
-            grammar: "Conditionals (1st & 2nd)",
-            vocabulary: "Technological verbs, Noun phrases",
-            skills: ["Writing: Task 2 (Opinion Essay)"]
+            grammar: "Present Passive (is made, is moved)",
+            vocabulary: "Process verbs (rotate, lift, push)",
+            skills: ["Describing a process", "Flow-charts"]
         },
         exercises: { grammar: [], vocabulary: [] }
     },
     {
         id: "unit-6",
         number: 6,
-        title: "Unit 6: Animals & Nature",
-        description: "Focus: Conservation, Wildlife, Climate change.",
+        title: "Unit 6: Attitude and Opinion",
+        description: "Focus: Identifying attitudes, persuading, reaching decisions.",
         topics: {
-            grammar: "Articles (a, an, the)",
-            vocabulary: "Environment collocations",
-            skills: ["Reading: Matching headings"]
+            grammar: "Modals of attitude (might, should, must)",
+            vocabulary: "Opinion verbs (agree, doubt, suggest)",
+            skills: ["Identifying Opinions", "Persuading"]
         },
         exercises: { grammar: [], vocabulary: [] }
     },
     {
         id: "unit-7",
         number: 7,
-        title: "Unit 7: Globalization",
-        description: "Focus: International trade, Cultural integration.",
+        title: "Unit 7: Following a Lecture",
+        description: "Focus: Main ideas, connected ideas, explanations.",
         topics: {
-            grammar: "Relative Clauses",
-            vocabulary: "Business terms, Global issues",
-            skills: ["Speaking: Part 3"]
+            grammar: "Discourse Markers (However, Consequently)",
+            vocabulary: "Academic lecture terms",
+            skills: ["Signposting words", "Understanding explanations"]
         },
         exercises: { grammar: [], vocabulary: [] }
     },
     {
         id: "unit-8",
         number: 8,
-        title: "Unit 8: Crime & The Law",
-        description: "Focus: Legal systems, Crime prevention.",
+        title: "Unit 8: Contrasting Ideas",
+        description: "Focus: Signposting words, comparing, using notes.",
         topics: {
-            grammar: "Reported Speech",
-            vocabulary: "Legal terminology",
-            skills: ["Listening: Map labelling"]
+            grammar: "Comparative structures",
+            vocabulary: "Contrast linkers (Unlike, Whereas)",
+            skills: ["Comparing/Contrasting", "Note-taking"]
         },
         exercises: { grammar: [], vocabulary: [] }
     }

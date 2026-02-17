@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { courseUnits } from "@/data/course_content";
 import ExerciseEngine from "@/components/ExerciseEngine";
 import { useState } from "react";
-import { ArrowLeft, BookOpen, Brain, PenTool, CheckCircle } from "lucide-react";
+import { ArrowLeft, BookOpen, Brain, PenTool, CheckCircle, Headphones } from "lucide-react";
 
 export default function UnitPage() {
     const params = useParams();
@@ -12,7 +12,7 @@ export default function UnitPage() {
     const unitId = params.unitId as string;
     const unit = courseUnits.find(u => u.id === unitId);
 
-    const [activeTab, setActiveTab] = useState<'grammar' | 'vocabulary' | 'reading'>('grammar');
+    const [activeTab, setActiveTab] = useState<'grammar' | 'vocabulary' | 'reading' | 'listening'>('listening');
 
     // Define handler for exercise completion
     const handleExerciseComplete = (score: number) => {
@@ -24,9 +24,10 @@ export default function UnitPage() {
     if (!unit) return <div className="p-10 text-center text-xl">Unit not found</div>;
 
     const tabs = [
+        { id: 'listening', icon: Headphones, label: 'Listening Skills' },
         { id: 'grammar', icon: Brain, label: 'Grammar' },
         { id: 'vocabulary', icon: BookOpen, label: 'Vocabulary' },
-        { id: 'reading', icon: PenTool, label: 'Skills Practice' },
+        { id: 'reading', icon: PenTool, label: 'Reading Skills' },
     ];
 
     return (
@@ -53,8 +54,8 @@ export default function UnitPage() {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id as any)}
                             className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold text-lg shadow-lg transition-all ${activeTab === tab.id
-                                    ? 'bg-amber-500 text-white scale-105'
-                                    : 'bg-white text-slate-600 hover:bg-slate-50'
+                                ? 'bg-amber-500 text-white scale-105'
+                                : 'bg-white text-slate-600 hover:bg-slate-50'
                                 }`}
                         >
                             <tab.icon className={`h-5 w-5 ${activeTab === tab.id ? 'text-white' : 'text-amber-500'}`} />
@@ -114,6 +115,26 @@ export default function UnitPage() {
                     {activeTab === 'reading' && !unit.exercises.reading && (
                         <div className="text-slate-400 italic p-10 text-center bg-slate-50 rounded-xl">
                             Coming soon: Reading Practice
+                        </div>
+                    )}
+
+                    {activeTab === 'listening' && unit.exercises.listening && (
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <div className="bg-slate-50 p-6 rounded-xl border">
+                                <h3 className="font-bold mb-4 flex items-center gap-2"><Headphones className="h-4 w-4" /> Audio Transcript (Simulation)</h3>
+                                <div className="prose prose-slate max-w-none italic text-slate-600">
+                                    "{unit.exercises.listening.transcript}"
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="font-bold mb-4">Questions</h3>
+                                <ExerciseEngine questions={unit.exercises.listening.questions} onComplete={handleExerciseComplete} />
+                            </div>
+                        </div>
+                    )}
+                    {activeTab === 'listening' && !unit.exercises.listening && (
+                        <div className="text-slate-400 italic p-10 text-center bg-slate-50 rounded-xl">
+                            This unit focuses on other skills.
                         </div>
                     )}
 
