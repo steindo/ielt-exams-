@@ -5,13 +5,17 @@ import { useRouter } from "next/navigation";
 import ExerciseEngine from "@/components/ExerciseEngine";
 // Import the massive new dataset
 import { universityPrepExercises } from "@/data/university_prep_exercises";
+import { uniPrepExpansion } from "@/data/university_prep_expansion";
+
+const allUniversityExercises = [...universityPrepExercises, ...uniPrepExpansion];
+
 
 export default function UniversityPrepPage() {
     const router = useRouter();
 
     const handleComplete = (score: number) => {
-        const percentage = Math.round((score / universityPrepExercises.length) * 100);
-        alert(`Progression Programme Harvard/Oxford Terminée !\n\nScore: ${score}/${universityPrepExercises.length} (${percentage}%)`);
+        const percentage = Math.round((score / allUniversityExercises.length) * 100);
+        alert(`Session Académique Terminée !\n\nScore: ${score}/${allUniversityExercises.length} (${percentage}%)`);
         router.push("/dashboard");
     };
 
@@ -37,27 +41,34 @@ export default function UniversityPrepPage() {
             </div>
 
             {/* Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div className="p-6 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col items-center text-center">
-                    <div className="h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center mb-4 text-amber-700">
-                        <Library className="h-6 w-6" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col items-center text-center">
+                    <div className="h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center mb-3 text-amber-700">
+                        <Library className="h-5 w-5" />
                     </div>
-                    <h3 className="font-bold text-lg mb-2">Grammaire & Rhétorique</h3>
-                    <p className="text-sm text-muted-foreground">Maîtrisez l'inversion, le subjonctif et les structures stylistiques complexes.</p>
+                    <h3 className="font-bold text-md mb-1">Grammaire & Style</h3>
+                    <p className="text-xs text-muted-foreground">Rhétorique, Inversion, Subjonctif</p>
                 </div>
-                <div className="p-6 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col items-center text-center">
-                    <div className="h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center mb-4 text-amber-700">
-                        <Brain className="h-6 w-6" />
+                <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col items-center text-center">
+                    <div className="h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center mb-3 text-amber-700">
+                        <Brain className="h-5 w-5" />
                     </div>
-                    <h3 className="font-bold text-lg mb-2">Vocabulaire C2+</h3>
-                    <p className="text-sm text-muted-foreground">Lexique de niveau GRE/GMAT pour une précision chirurgicale.</p>
+                    <h3 className="font-bold text-md mb-1">Vocab & Étymologie</h3>
+                    <p className="text-xs text-muted-foreground">GRE/GMAT, Racines latines/grecques</p>
                 </div>
-                <div className="p-6 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col items-center text-center">
-                    <div className="h-12 w-12 rounded-full bg-amber-100 flex items-center justify-center mb-4 text-amber-700">
-                        <GraduationCap className="h-6 w-6" />
+                <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col items-center text-center">
+                    <div className="h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center mb-3 text-amber-700">
+                        <GraduationCap className="h-5 w-5" />
                     </div>
-                    <h3 className="font-bold text-lg mb-2">Logique Critique</h3>
-                    <p className="text-sm text-muted-foreground">Analyse d'arguments et identification de fallacies logiques.</p>
+                    <h3 className="font-bold text-md mb-1">Analyse Littéraire</h3>
+                    <p className="text-xs text-muted-foreground">Lecture critique de textes complexes</p>
+                </div>
+                <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col items-center text-center">
+                    <div className="h-10 w-10 rounded-full bg-amber-100 flex items-center justify-center mb-3 text-amber-700">
+                        <Crown className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-bold text-md mb-1">Correction d'Erreurs</h3>
+                    <p className="text-xs text-muted-foreground">Édition et précision chirurgicale</p>
                 </div>
             </div>
 
@@ -67,17 +78,19 @@ export default function UniversityPrepPage() {
                     <div>
                         <h2 className="text-2xl font-bold flex items-center gap-2">
                             <Crown className="h-6 w-6 text-amber-500" />
-                            Session d'entraînement intensif
+                            Session Intensive (6 Mois)
                         </h2>
-                        <p className="text-slate-500 mt-1">Série complète de {universityPrepExercises.length} questions</p>
+                        <p className="text-slate-500 mt-1">
+                            Banque de questions: <strong>{allUniversityExercises.length} items haute-précision</strong>
+                        </p>
                     </div>
 
                     <div className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-bold text-sm">
-                        Objective: Top 1%
+                        Objectif: Harvard/Oxford Admission
                     </div>
                 </div>
 
-                <ExerciseEngine questions={universityPrepExercises} onComplete={handleComplete} />
+                <ExerciseEngine questions={allUniversityExercises} onComplete={handleComplete} />
             </div>
         </div>
     );
