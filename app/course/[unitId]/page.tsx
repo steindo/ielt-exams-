@@ -202,6 +202,16 @@ export default function UnitPage() {
                                                     </table>
                                                 </div>
                                             );
+                                            if (block.type === 'image') return (
+                                                <div key={bIdx} className="my-12 relative rounded-[3rem] overflow-hidden border-4 border-slate-50 shadow-2xl group">
+                                                    <img
+                                                        src={block.text}
+                                                        alt="Course content"
+                                                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-1000"
+                                                    />
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
+                                                </div>
+                                            );
                                             return null;
                                         })}
                                     </div>
