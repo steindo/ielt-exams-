@@ -1,6 +1,8 @@
 import { Question } from "@/components/ExerciseEngine";
 import courseData from "./courseContent.json";
 
+// Last Sync: 2026-02-18 17:59
+
 export interface LessonParagraph {
     type: 'text' | 'bullet' | 'tip' | 'header' | 'audio_script' | 'table';
     text?: string;
