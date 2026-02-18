@@ -10,11 +10,15 @@ export interface LessonPart {
     content: LessonParagraph[];
 }
 
+export type UnitCategory = 'intro' | 'listening' | 'reading' | 'writing' | 'speaking' | 'test';
+
 export interface CourseUnit {
     id: string;
-    number: number;
+    number: number | string; // Using string for intro/tests if needed, or keeping it flexible
     title: string;
     description: string;
+    category: UnitCategory;
+    pageRange?: string;
     topics: {
         grammar: string;
         vocabulary: string;
@@ -30,69 +34,112 @@ export interface CourseUnit {
     };
 }
 
-// FULL BOOK STRUCTURE SIMULATION based on "OutputFormatted" docx
-// Listening: Units 1-8
-// Reading: Units 9-16
-// Writing: Units 17-24 (Estimated)
-// Speaking: Units 25+
-
 export const courseUnits: CourseUnit[] = [
-    // --- LISTENING SECTION (Units 1-8) ---
+    // --- 1. INTRODUCTION & IELTS SUMMARY (Pages 5-12) ---
+    {
+        id: "intro-summary",
+        number: "5-12",
+        title: "Introduction & IELTS Summary",
+        description: "Official guide to the IELTS test structure and how to use this book.",
+        category: "intro",
+        pageRange: "5-12",
+        topics: {
+            grammar: "Test Overview",
+            vocabulary: "IELTS Terminology"
+        },
+        lessons: [
+            {
+                title: "Introduction",
+                content: [
+                    { type: 'header', text: "Who is this book aimed at?" },
+                    { type: 'text', text: "This book is designed for candidates of any level hoping to take the IELTS test. It is suitable for students working alone or in a classroom situation. The materials can be used for self-study, or can be integrated into an IELTS preparation course. The book is also a valuable resource for teachers who are preparing IELTS candidates." },
+                    { type: 'header', text: "How can students of different levels use this book?" },
+                    { type: 'text', text: "Each Academic Module candidate will take the same test, no matter what his or her English level is. Similarly, each General Training candidate will take the same General Training test. So, the information in this book is useful and important to students of every level." },
+                    { type: 'text', text: "Lower-level language students generally need more guided practice. More advanced students need frequent opportunities for self-expression, but they also need to become more self-critical and aware of their own common mistakes." }
+                ]
+            },
+            {
+                title: "How is the book organised?",
+                content: [
+                    { type: 'text', text: "At the beginning of the book, there is a summary of each IELTS paper. Then, there are four sections dealing with the four skills covered in IELTS: Listening, Reading, Writing and Speaking." },
+                    { type: 'text', text: "These are divided into units, which focus on key areas aiming to build your abilities and confidence, and provide authentic test practice." },
+                    { type: 'tip', text: "For the skills sections, it is best to work through each unit in order. This is because the tasks and information are graded, developing your skills as the units progress." }
+                ]
+            },
+            {
+                title: "What is 'paraphrase'?",
+                content: [
+                    { type: 'text', text: "Paraphrase is the use of different words to express the same idea. In order to test whether you have understood the Reading and Listening texts, the questions in IELTS will paraphrase the words used in the texts." },
+                    { type: 'tip', text: "In the Writing and Speaking sections, being able to use paraphrase, instead of simply repeating and copying the words in the question, will show that you have a wide vocabulary and help you to achieve a higher score." }
+                ]
+            }
+        ],
+        exercises: {
+            grammar: [],
+            vocabulary: []
+        }
+    },
+
+    // --- 2. LISTENING SKILLS (8 Units) ---
     {
         id: "unit-1",
         number: 1,
         title: "Unit 1: Getting Ready to Listen",
         description: "Focus: Understanding context, correct spelling, and numbers.",
+        category: "listening",
+        pageRange: "15-17",
         topics: {
             grammar: "Subject-Verb Agreement",
             vocabulary: "Contextual Keywords"
         },
         lessons: [
             {
-                title: "Understanding the Context",
+                title: "1 Understanding the context",
                 content: [
-                    { type: 'text', text: "In the introduction to the Listening section, you will be told who the speakers are, where they are and why they are talking. This is called the context. It helps you understand the topic." },
-                    { type: 'tip', text: "Before you do each section, you will be given 30–45 seconds to look at the questions. Use this time to study the questions and try to predict what you might hear." },
+                    { type: 'text', text: "In the introduction to the Listening section, you will be told who the speakers are, where they are and why they are talking. This is called the context. It helps you understand the topic. It is not written on the question paper." },
+                    { type: 'tip', text: "Before you do each section, you will be given 30—45 seconds to look at the questions. Use this time to Study the questions and try to predict what you might hear." },
                     { type: 'text', text: "Studying the questions before you listen can help you predict what the speakers will talk about." }
                 ]
             },
             {
-                title: "Using Correct Spelling",
+                title: "2 Using the correct spelling",
                 content: [
-                    { type: 'text', text: "In Listening Section 1, you may need to listen for the name of a person or a place. Often, the names will be spelt out for you. You need to recognise the letters of the English alphabet well, so that you can write the letters you hear quickly." },
+                    { type: 'text', text: "In Listening Section I, you may need to listen for the name of a person or a place. Often, the names will be spelt out for you. You need to recognise the letters of the English alphabet well, so that you can write the letters you hear quickly." },
                     { type: 'bullet', text: "You will only hear the spelling once." },
-                    { type: 'bullet', text: "Any spellings that you hear will be in the context of a normal conversation." },
-                    { type: 'tip', text: "Always check your spelling. If you make a spelling mistake in the IELTS Listening paper, your answer will be marked wrong." }
+                    { type: 'bullet', text: "Any spellings that you hear will be in the context of a normal conversation, so you need to be able to hear the difference between letters and words." },
+                    { type: 'tip', text: "Always check your spelling. If you make a spelling mistake in the IELTS Listening paper, your answer will be marked wrong." },
+                    { type: 'text', text: "There are several ways to help you spell a word. Listen carefully, as there are several ways of helping people to spell a word without simply spelling it out." }
                 ]
             },
             {
-                title: "Writing Numbers",
+                title: "3 Writing numbers",
                 content: [
-                    { type: 'text', text: "In Section 1 of the Listening paper, you need to listen for specific details such as dates, prices, and times." },
-                    { type: 'bullet', text: "Practice saying numbers clearly to help you recognize them when you hear them." }
+                    { type: 'text', text: "In Section I of the Listening paper, you need to listen for specific details. This often involves writing down numbers like dates, prices, or times." },
+                    { type: 'bullet', text: "Listen for the difference between 'teen' and 'ty' numbers (e.g. 17 vs 70)." },
+                    { type: 'bullet', text: "Be careful with currency symbols and decimals ($10.50)." },
+                    { type: 'tip', text: "If you need to write something that is not a name (e.g. the registration number of a car), you may hear a combination of numbers and letters." }
                 ]
             }
         ],
         exercises: {
             grammar: [],
-            vocabulary: [
-                {
-                    id: "u1-v1",
-                    type: "GapFill",
-                    question: "Listen and spell the name: P-E-T-E-R-___-O-N",
-                    correctAnswer: "S",
-                    explanation: "S is the missing letter."
-                }
-            ],
+            vocabulary: [],
             listening: {
-                transcript: "In Section 1, names are often spelt out. 'My name is Andrew Peterson. P-E-T-E-R-S-O-N.'",
+                transcript: "Context 1: Organizing a party. Susie will organize invitations and food. Context 2: Andrew Peterson spelling his name: P-E-T-E-R-S-O-N. Context 3: Car registration HLP 528.",
                 questions: [
                     {
-                        id: "u1-l1",
+                        id: "u1-q1",
                         type: "GapFill",
                         question: "Name: Mr Andrew ___",
                         correctAnswer: "Peterson",
                         explanation: "Spelt P-E-T-E-R-S-O-N."
+                    },
+                    {
+                        id: "u1-q2",
+                        type: "GapFill",
+                        question: "Registration number: ___",
+                        correctAnswer: "HLP 528",
+                        explanation: "As heard in the recording."
                     }
                 ]
             }
@@ -102,26 +149,31 @@ export const courseUnits: CourseUnit[] = [
         id: "unit-2",
         number: 2,
         title: "Unit 2: Following a Conversation",
-        description: "Focus: Identifying speakers, function, and spelling names.",
+        description: "Focus: Identifying speakers, function, and understanding categories.",
+        category: "listening",
+        pageRange: "18-21",
         topics: {
             grammar: "Present Simple & Continuous",
             vocabulary: "Personal Information, Occupations, Family",
         },
         lessons: [
             {
-                title: "Identifying the Speakers",
+                title: "1 Identifying the speakers",
                 content: [
-                    { type: 'text', text: "In Section 1 of the Listening paper, you will hear a conversation between two people. One of them usually wants to find out information from the other." },
-                    { type: 'bullet', text: "One speaker is often trying to make a booking (e.g., at a hotel or restaurant)." },
-                    { type: 'bullet', text: "The other speaker is typically a receptionist or employee providing information." },
-                    { type: 'tip', text: "Pay attention to the relationship between the speakers. This often helps you predict the kind of information that will be exchanged." }
+                    { type: 'text', text: "For Sections 1 and 3, each speaker will have a different voice to help you tell them apart (e.g. male/female; younger/older). Both speakers will talk equally, and you will hear answers from both speakers." },
+                    { type: 'text', text: "For Section 1, there is normally one person who has to find out information from the other." },
+                    { type: 'tip', text: "In the IELTS Listening paper, Sections 1 and 3 are conversations between two or three people. Sections 2 and 4 are monologues with only one main speaker." },
+                    { type: 'text', text: "Sometimes, you may hear another speaker introducing the talk or asking questions. You need to listen to both speakers carefully." }
                 ]
             },
             {
-                title: "Understanding the Function",
+                title: "2 Identifying function",
                 content: [
-                    { type: 'text', text: "Speakers in IELTS Listening often have specific intentions, such as agreeing, disagreeing, or asking for clarification." },
-                    { type: 'bullet', text: "Listen for key phrases like 'I'd like to...', 'Could you tell me...', or 'That's right'." }
+                    { type: 'text', text: "Each speaker has a specific purpose in mind when they talk. We say their language has a function. We use different language for different functions." },
+                    { type: 'bullet', text: "Expressing agreement or disagreement." },
+                    { type: 'bullet', text: "Correcting information (Self-correction or correcting others)." },
+                    { type: 'bullet', text: "Expressing preferences or doubts." },
+                    { type: 'tip', text: "You will hear native speaker accents from several English-speaking countries in the test. These may include British, American, Canadian, Australian and New Zealand accents." }
                 ]
             }
         ],
@@ -135,27 +187,36 @@ export const courseUnits: CourseUnit[] = [
                         id: "u2-l1",
                         type: "MCQ",
                         question: "Who is asking for information?",
-                        options: ["Speaker A", "Speaker B", "Both", "Reference"],
+                        options: ["Speaker A", "Speaker B", "Both"],
                         correctAnswer: 0,
                         explanation: "Speaker A starts with 'I'd like to ask...'."
+                    },
+                    {
+                        id: "u2-l2",
+                        type: "GapFill",
+                        question: "Experience: ___ years.",
+                        correctAnswer: "3",
+                        explanation: "Speaker A mentioned 3 years."
                     }
                 ]
             }
         }
     },
-    { id: "unit-3", number: 3, title: "Unit 3: Recognising Paraphrase", description: "Focus: Distractors and Paraphrasing.", topics: { grammar: "Synonyms", vocabulary: "Academic" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-4", number: 4, title: "Unit 4: Places and Directions", description: "Focus: Maps and Directions.", topics: { grammar: "Prepositions", vocabulary: "Directions" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-5", number: 5, title: "Unit 5: Actions and Processes", description: "Focus: Flow-charts and Processes.", topics: { grammar: "Passive Voice", vocabulary: "Verbs of motion" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-6", number: 6, title: "Unit 6: Attitude and Opinion", description: "Focus: Identifying opinions.", topics: { grammar: "Modals", vocabulary: "Opinion verbs" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-7", number: 7, title: "Unit-7: Following a Lecture", description: "Focus: Academic lectures.", topics: { grammar: "Discourse Markers", vocabulary: "Academic" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-8", number: 8, title: "Unit-8: Contrasting Ideas", description: "Focus: Comparing and contrasting.", topics: { grammar: "Comparatives", vocabulary: "Linkers" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-3", number: 3, title: "Unit 3: Recognising Paraphrase", description: "Focus: Distractors and Paraphrasing.", category: "listening", pageRange: "22-24", topics: { grammar: "Synonyms", vocabulary: "Academic" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-4", number: 4, title: "Unit 4: Places and Directions", description: "Focus: Maps and Directions.", category: "listening", pageRange: "25-28", topics: { grammar: "Prepositions", vocabulary: "Directions" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-5", number: 5, title: "Unit 5: Actions and Processes", description: "Focus: Flow-charts and Processes.", category: "listening", pageRange: "29-32", topics: { grammar: "Passive Voice", vocabulary: "Verbs of motion" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-6", number: 6, title: "Unit 6: Attitude and Opinion", description: "Focus: Identifying opinions.", category: "listening", pageRange: "33-35", topics: { grammar: "Modals", vocabulary: "Opinion verbs" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-7", number: 7, title: "Unit-7: Following a Lecture", description: "Focus: Academic lectures.", category: "listening", pageRange: "36-38", topics: { grammar: "Discourse Markers", vocabulary: "Academic" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-8", number: 8, title: "Unit-8: Contrasting Ideas", description: "Focus: Comparing and contrasting.", category: "listening", pageRange: "39-41", topics: { grammar: "Comparatives", vocabulary: "Linkers" }, exercises: { grammar: [], vocabulary: [] } },
 
-    // --- READING SECTION (Units 9-16) ---
+    // --- 3. READING SKILLS (8 Units) ---
     {
         id: "unit-9",
         number: 9,
         title: "Unit 9: Reading Strategies",
         description: "Focus: Skimming and Scanning.",
+        category: "reading",
+        pageRange: "44-47",
         topics: {
             grammar: "N/A",
             vocabulary: "Topic sentences",
@@ -178,20 +239,22 @@ export const courseUnits: CourseUnit[] = [
             }
         }
     },
-    { id: "unit-10", number: 10, title: "Unit 10: Descriptive Passages", description: "Focus: Description.", topics: { grammar: "Adjectives", vocabulary: "Descriptive" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-11", number: 11, title: "Unit 11: Understanding Main Ideas", description: "Focus: Paragraph headings.", topics: { grammar: "Nuns", vocabulary: "Headings" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-12", number: 12, title: "Unit 12: Locating Information", description: "Focus: Finding details.", topics: { grammar: "Scanning", vocabulary: "Synonyms" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-13", number: 13, title: "Unit 13: Discursive Passages", description: "Focus: Arguments.", topics: { grammar: "Linkers", vocabulary: "Argument" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-14", number: 14, title: "Unit 14: Multiple Choice", description: "Focus: MCQ strategies.", topics: { grammar: "N/A", vocabulary: "N/A" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-15", number: 15, title: "Unit 15: Opinions and Attitudes", description: "Focus: Writer's view.", topics: { grammar: "Modals", vocabulary: "Opinion" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-16", number: 16, title: "Unit 16: General Training Reading", description: "Focus: General Training specifics.", topics: { grammar: "N/A", vocabulary: "Workplace" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-10", number: 10, title: "Unit 10: Descriptive Passages", description: "Focus: Description.", category: "reading", pageRange: "48-54", topics: { grammar: "Adjectives", vocabulary: "Descriptive" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-11", number: 11, title: "Unit 11: Understanding Main Ideas", description: "Focus: Paragraph headings.", category: "reading", pageRange: "55-58", topics: { grammar: "Nouns", vocabulary: "Headings" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-12", number: 12, title: "Unit 12: Locating Information", description: "Focus: Finding details.", category: "reading", pageRange: "59-63", topics: { grammar: "Scanning", vocabulary: "Synonyms" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-13", number: 13, title: "Unit 13: Discursive Passages", description: "Focus: Arguments.", category: "reading", pageRange: "64-69", topics: { grammar: "Linkers", vocabulary: "Argument" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-14", number: 14, title: "Unit 14: Multiple Choice", description: "Focus: MCQ strategies.", category: "reading", pageRange: "70-72", topics: { grammar: "N/A", vocabulary: "N/A" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-15", number: 15, title: "Unit 15: Opinions and Attitudes", description: "Focus: Writer's view.", category: "reading", pageRange: "73-77", topics: { grammar: "Modals", vocabulary: "Opinion" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-16", number: 16, title: "Unit 16: General Training Reading", description: "Focus: General Training specifics.", category: "reading", pageRange: "78-84", topics: { grammar: "N/A", vocabulary: "Workplace" }, exercises: { grammar: [], vocabulary: [] } },
 
-    // --- WRITING SECTION (Units 17-20) ---
+    // --- 4. WRITING SKILLS (8 Units) ---
     {
         id: "unit-17",
         number: 17,
         title: "Unit 17: Academic Task 1 - Charts",
         description: "Focus: Describing charts and graphs.",
+        category: "writing",
+        pageRange: "93-99",
         topics: {
             grammar: "Comparatives/Superlatives",
             vocabulary: "Trends (increase, decrease)",
@@ -205,7 +268,7 @@ export const courseUnits: CourseUnit[] = [
             }
         }
     },
-    { id: "unit-18", number: 18, title: "Unit 18: Task 1 - Comparing Data", description: "Focus: Comparisons.", topics: { grammar: "Contrast", vocabulary: "Comparison" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-19", number: 19, title: "Unit 19: Task 1 - Diagrams & Maps", description: "Focus: Process and Maps.", topics: { grammar: "Passive/Prepositions", vocabulary: "Process verbs" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-20", number: 20, title: "Unit 20: Task 2 - Essay Structure", description: "Focus: Opinion Essays.", topics: { grammar: "Paragraphing", vocabulary: "Cohesion" }, exercises: { grammar: [], vocabulary: [] } }
+    { id: "unit-18", number: 18, title: "Unit 18: Task 1 - Comparing Data", description: "Focus: Comparisons.", category: "writing", pageRange: "100-105", topics: { grammar: "Contrast", vocabulary: "Comparison" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-19", number: 19, title: "Unit 19: Task 1 - Diagrams & Maps", description: "Focus: Process and Maps.", category: "writing", pageRange: "106-112", topics: { grammar: "Passive/Prepositions", vocabulary: "Process verbs" }, exercises: { grammar: [], vocabulary: [] } },
+    { id: "unit-20", number: 20, title: "Unit 20: Task 2 - Essay Structure", description: "Focus: Opinion Essays.", category: "writing", pageRange: "113-118", topics: { grammar: "Paragraphing", vocabulary: "Cohesion" }, exercises: { grammar: [], vocabulary: [] } }
 ];
