@@ -8,12 +8,10 @@ const nextConfig: NextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
-  // eslint config is deprecated in next.config.ts for recent versions, 
-  // keeping it clean to avoid build warnings/errors on Vercel.
-  // We already fixed lint errors in the code.
+  // eslint config is ignored in recent Next.js versions via next.config.ts
+  // keeping it clean.
 
-  // Force output to 'dist' to match Vercel's expectation.
-  distDir: 'dist',
+  // Reverting distDir to default '.next' to restore standard Vercel integration
 };
 
 export default nextConfig;
