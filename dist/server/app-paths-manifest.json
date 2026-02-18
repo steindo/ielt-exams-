@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/generate-exercises/page": "app/admin/generate-exercises/page.js",
+  "/api/generate-advanced/route": "app/api/generate-advanced/route.js",
+  "/api/generate-exercises/route": "app/api/generate-exercises/route.js",
+  "/assessment/page": "app/assessment/page.js",
+  "/course/[unitId]/page": "app/course/[unitId]/page.js",
+  "/course/page": "app/course/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/exercises/[level]/page": "app/exercises/[level]/page.js",
+  "/exercises/academic/page": "app/exercises/academic/page.js",
+  "/exercises/page": "app/exercises/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/ielts/listening/page": "app/ielts/listening/page.js",
+  "/ielts/reading/page": "app/ielts/reading/page.js",
+  "/ielts/speaking/page": "app/ielts/speaking/page.js",
+  "/ielts/writing/page": "app/ielts/writing/page.js",
+  "/page": "app/page.js"
+}

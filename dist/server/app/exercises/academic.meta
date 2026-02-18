@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/exercises/layout,_N_T_/exercises/academic/layout,_N_T_/exercises/academic/page,_N_T_/exercises/academic"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/exercises/academic/__PAGE__",
+    "/exercises/academic",
+    "/exercises",
+    "/_index",
+    "/_head"
+  ]
+}

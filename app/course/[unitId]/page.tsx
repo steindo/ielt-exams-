@@ -14,6 +14,7 @@ export default function UnitPage() {
     const unit = courseUnits.find(u => u.id === unitId);
 
     const [activeTab, setActiveTab] = useState<'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking'>('grammar');
+    const [showTranscript, setShowTranscript] = useState(false);
 
     // Define handler for exercise completion
     const handleExerciseComplete = (score: number) => {
@@ -83,7 +84,16 @@ export default function UnitPage() {
                     </h2>
 
                     {activeTab === 'grammar' && (
-                        <div>
+                        <div className="space-y-6">
+                            <div className="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                                <h3 className="text-xl font-bold text-blue-800 mb-2 flex items-center gap-2">
+                                    <Brain className="h-5 w-5" /> Grammar Lesson: {unit.topics.grammar}
+                                </h3>
+                                <p className="text-blue-900 opacity-80">
+                                    In this unit, we focus on <strong>{unit.topics.grammar}</strong>.
+                                    Review the rules below before starting the exercises.
+                                </p>
+                            </div>
                             {unit.exercises.grammar.length > 0 ? (
                                 <ExerciseEngine questions={unit.exercises.grammar} onComplete={handleExerciseComplete} />
                             ) : (
@@ -95,7 +105,15 @@ export default function UnitPage() {
                     )}
 
                     {activeTab === 'vocabulary' && (
-                        <div>
+                        <div className="space-y-6">
+                            <div className="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                                <h3 className="text-xl font-bold text-purple-800 mb-2 flex items-center gap-2">
+                                    <PenTool className="h-5 w-5" /> Vocabulary Focus: {unit.topics.vocabulary}
+                                </h3>
+                                <p className="text-purple-900 opacity-80">
+                                    Mastering <strong>{unit.topics.vocabulary}</strong> is essential for this unit's theme.
+                                </p>
+                            </div>
                             {unit.exercises.vocabulary.length > 0 ? (
                                 <ExerciseEngine questions={unit.exercises.vocabulary} onComplete={handleExerciseComplete} />
                             ) : (
@@ -126,13 +144,24 @@ export default function UnitPage() {
                                     <TextToSpeech text={unit.exercises.listening.transcript} />
                                 </div>
 
-                                <div className="prose prose-slate max-w-none italic text-slate-600 border-t pt-4">
-                                    <span className="text-xs font-bold text-slate-400 uppercase mb-2 block">Transcript Preview</span>
-                                    &quot;{unit.exercises.listening.transcript}&quot;
+                                <div className="mt-4">
+                                    <button
+                                        onClick={() => setShowTranscript(!showTranscript)}
+                                        className="text-xs font-bold text-slate-500 hover:text-amber-600 transition-colors uppercase tracking-widest flex items-center gap-1"
+                                    >
+                                        {showTranscript ? "Hide Transcript" : "Show Transcript"}
+                                    </button>
                                 </div>
+
+                                {showTranscript && (
+                                    <div className="prose prose-slate max-w-none italic text-slate-600 border-t pt-4 mt-4 animate-in fade-in duration-300">
+                                        <span className="text-xs font-bold text-slate-400 uppercase mb-2 block">Audio Script</span>
+                                        &quot;{unit.exercises.listening.transcript}&quot;
+                                    </div>
+                                )}
                             </div>
                             <div>
-                                <h3 className="font-bold mb-4">Questions</h3>
+                                <h3 className="font-bold mb-4 text-slate-700">Questions</h3>
                                 <ExerciseEngine questions={unit.exercises.listening.questions} onComplete={handleExerciseComplete} />
                             </div>
                         </div>

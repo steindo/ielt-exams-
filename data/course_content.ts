@@ -69,9 +69,9 @@ export const courseUnits: CourseUnit[] = [
         title: "Unit 2: Following a Conversation",
         description: "Focus: Identifying speakers and function.",
         topics: {
-            grammar: "Interrogative forms",
-            vocabulary: "Functional language",
-            skills: ["Identifying Speakers", "Matching Items"]
+            grammar: "Present Simple & Continuous",
+            vocabulary: "Personal Information, Occupations, Family",
+            skills: ["Identifying Speakers", "Spelling names"]
         },
         exercises: {
             grammar: [],

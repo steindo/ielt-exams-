@@ -41,7 +41,7 @@ export default function CourseMapPage() {
                     <div className="absolute left-8 top-8 bottom-8 w-1 bg-slate-200 rounded-full -z-10" />
 
                     {courseUnits.map((unit, index) => {
-                        const isUnlocked = index < 3; // Demo: first 3 unlocked
+                        const isUnlocked = true; // All units unlocked for review
                         const isCompleted = index < 1; // Demo: unit 1 completed
                         const isActive = index === 1;   // Demo: unit 2 active
 

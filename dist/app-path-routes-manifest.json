@@ -1,0 +1,20 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/admin/generate-exercises/page": "/admin/generate-exercises",
+  "/api/generate-advanced/route": "/api/generate-advanced",
+  "/api/generate-exercises/route": "/api/generate-exercises",
+  "/assessment/page": "/assessment",
+  "/course/[unitId]/page": "/course/[unitId]",
+  "/course/page": "/course",
+  "/dashboard/page": "/dashboard",
+  "/exercises/[level]/page": "/exercises/[level]",
+  "/exercises/academic/page": "/exercises/academic",
+  "/exercises/page": "/exercises",
+  "/favicon.ico/route": "/favicon.ico",
+  "/ielts/listening/page": "/ielts/listening",
+  "/ielts/reading/page": "/ielts/reading",
+  "/ielts/speaking/page": "/ielts/speaking",
+  "/ielts/writing/page": "/ielts/writing",
+  "/page": "/"
+}

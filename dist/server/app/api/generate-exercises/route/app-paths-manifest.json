@@ -1,0 +1,3 @@
+{
+  "/api/generate-exercises/route": "app/api/generate-exercises/route.js"
+}
