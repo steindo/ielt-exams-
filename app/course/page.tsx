@@ -41,7 +41,7 @@ export default function CourseMapPage() {
                     {[
                         { title: "Introduction", icon: Book, category: "intro", rangeText: "Summary (p5-12)", color: "slate" },
                         { title: "Listening Skills", icon: Headphones, category: "listening", rangeText: "8 Units (p13-41)", color: "amber" },
-                        { title: "Reading Skills", icon: BookOpen, category: "BookOpen", rangeText: "8 Units (p42-90)", color: "blue" },
+                        { title: "Reading Skills", icon: BookOpen, category: "reading", rangeText: "8 Units (p42-90)", color: "blue" },
                         { title: "Writing Skills", icon: Keyboard, category: "writing", rangeText: "8 Units (p91-133)", color: "emerald" },
                         { title: "Speaking Skills", icon: Headphones, category: "speaking", rangeText: "4 Units (p134-153)", color: "purple" },
                         { title: "Practice Tests", icon: Star, category: "test", rangeText: "8 Tests (p154+)", color: "rose" }

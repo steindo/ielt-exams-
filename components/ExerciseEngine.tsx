@@ -27,6 +27,14 @@ export default function ExerciseEngine({ questions, onComplete }: ExerciseEngine
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [score, setScore] = useState(0);
 
+    if (!questions || questions.length === 0) {
+        return (
+            <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-[2.5rem] p-10 text-center">
+                <p className="text-slate-400 font-medium italic">Exercise content coming soon...</p>
+            </div>
+        );
+    }
+
     const currentQuestion = questions[currentIndex];
 
     const handleSelect = (index: number) => {

@@ -161,7 +161,7 @@ export default function UnitPage() {
                                 </div>
 
                                 <div className="space-y-12">
-                                    {unit.exercises.listening && (
+                                    {unit.exercises.listening && unit.exercises.listening.questions.length > 0 && (
                                         <div className="bg-slate-50 rounded-[3rem] p-12 border-2 border-slate-100">
                                             <div className="flex justify-between items-center mb-10">
                                                 <div>

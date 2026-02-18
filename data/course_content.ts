@@ -224,6 +224,43 @@ export const courseUnits: CourseUnit[] = [
         }
     },
     {
+        id: "unit-4",
+        number: 4,
+        title: "Unit 4: Getting to Know the Test (Section 3)",
+        description: "Focus: Section 3 - Multiple choice (Complex) and Identifying attitudes/opinions.",
+        category: "listening",
+        pageRange: "27-30",
+        topics: {
+            grammar: "Agreement & Disagreement expressions",
+            vocabulary: "Academic discussion, Synonyms, Paraphrase",
+        },
+        lessons: [
+            {
+                title: "1 Multiple choice (Complex)",
+                content: [
+                    { type: 'text', text: "In Section 3, multiple-choice questions are more complex. You often hear speakers agreeing, disagreeing, or changing their minds." },
+                    { type: 'tip', text: "Listen for the final decision. Distractors often involve options that are mentioned but eventually rejected." }
+                ]
+            },
+            {
+                title: "2 Identifying opinions",
+                content: [
+                    { type: 'text', text: "You need to identify whether speakers agree or disagree on certain points." },
+                    { type: 'bullet', text: "Agreeing: 'Exactly', 'I agree up to a point', 'That would be better'." },
+                    { type: 'bullet', text: "Disagreeing/Doubt: 'I'm not so sure', 'Hmm, that's a bit...', 'I have to admit I don't like...'" }
+                ]
+            }
+        ],
+        exercises: {
+            grammar: [],
+            vocabulary: [],
+            listening: {
+                transcript: "",
+                questions: []
+            }
+        }
+    },
+    {
         id: "unit-5",
         number: 5,
         title: "Unit 5: Getting to Know the Test (Section 4)",
