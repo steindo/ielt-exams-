@@ -103,7 +103,26 @@ export default function UnitPage() {
                         {/* Unit Intro Header */}
                         <div className="mb-24">
                             <h2 className="text-6xl font-black text-slate-900 tracking-tighter mb-6">{unit.title}</h2>
-                            <p className="text-2xl font-medium text-slate-400 max-w-2xl leading-relaxed">{unit.description}</p>
+                            <p className="text-2xl font-medium text-slate-400 max-w-2xl leading-relaxed mb-10">{unit.description}</p>
+
+                            {unit.objectives && unit.objectives.length > 0 && (
+                                <div className="bg-slate-50 rounded-[2.5rem] p-10 border-2 border-slate-100 flex flex-col gap-6">
+                                    <div className="flex items-center gap-3">
+                                        <div className="p-2 bg-slate-900 rounded-xl text-white">
+                                            <Star className="h-5 w-5 fill-current" />
+                                        </div>
+                                        <span className="text-sm font-black uppercase tracking-[0.3em] text-slate-900">Unit Objectives</span>
+                                    </div>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {unit.objectives.map((obj, i) => (
+                                            <li key={i} className="flex items-center gap-3 text-lg font-bold text-slate-600">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                                                {obj}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
                         </div>
 
                         {/* Lessons / Sections */}

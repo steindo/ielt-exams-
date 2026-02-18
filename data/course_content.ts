@@ -22,6 +22,7 @@ export interface CourseUnit {
     description: string;
     category: UnitCategory;
     pageRange?: string;
+    objectives?: string[];
     topics: {
         grammar: string;
         vocabulary: string;
