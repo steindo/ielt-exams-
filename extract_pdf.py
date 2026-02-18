@@ -1,24 +1,12 @@
 import sys
+import os
 
 def check_and_extract(pdf_path):
-    try:
-        import pypdf
-        print("Using pypdf")
-        reader = pypdf.PdfReader(pdf_path)
-        text = ""
-        for page in reader.pages:
-            text += page.extract_text() + "\n"
-        print("=== TEXT START ===")
-        print(text)
-        print("=== TEXT END ===")
-        return
-    except ImportError:
-        pass
-
+    pdf_basename = os.path.splitext(os.path.basename(pdf_path))[0]
+    
     try:
         import fitz  # PyMuPDF
-        import os
-        print("Using pymupdf")
+        print(f"Using pymupdf for {pdf_path}")
         doc = fitz.open(pdf_path)
         text = ""
         img_dir = "public/images/course"
@@ -34,7 +22,7 @@ def check_and_extract(pdf_path):
                 base_image = doc.extract_image(xref)
                 image_bytes = base_image["image"]
                 image_ext = base_image["ext"]
-                image_filename = f"pdf_1_img_{i}_{img_index}.{image_ext}"
+                image_filename = f"{pdf_basename}_img_{i}_{img_index}.{image_ext}"
                 with open(os.path.join(img_dir, image_filename), "wb") as f:
                     f.write(image_bytes)
                 print(f"Extracted image: {image_filename}")
@@ -42,8 +30,22 @@ def check_and_extract(pdf_path):
         
         print(f"Total images extracted: {img_count}")
         print("=== TEXT START ===")
-        print(text)
-        print("=== TEXT END ===")
+        sys.stdout.buffer.write(text.encode('utf-8'))
+        print("\n=== TEXT END ===")
+        return
+    except ImportError:
+        pass
+
+    try:
+        import pypdf
+        print("Using pypdf")
+        reader = pypdf.PdfReader(pdf_path)
+        text = ""
+        for page in reader.pages:
+            text += page.extract_text() + "\n"
+        print("=== TEXT START ===")
+        sys.stdout.buffer.write(text.encode('utf-8'))
+        print("\n=== TEXT END ===")
         return
     except ImportError:
         pass
@@ -53,8 +55,8 @@ def check_and_extract(pdf_path):
         print("Using pdfminer")
         text = extract_text(pdf_path)
         print("=== TEXT START ===")
-        print(text)
-        print("=== TEXT END ===")
+        sys.stdout.buffer.write(text.encode('utf-8'))
+        print("\n=== TEXT END ===")
         return
     except ImportError:
         pass
