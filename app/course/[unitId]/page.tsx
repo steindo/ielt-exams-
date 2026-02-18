@@ -145,6 +145,44 @@ export default function UnitPage() {
                                                     <p className="text-2xl font-bold leading-relaxed text-slate-100 relative z-10">{block.text}</p>
                                                 </div>
                                             );
+                                            if (block.type === 'audio_script') return (
+                                                <div key={bIdx} className="bg-amber-50 rounded-[2rem] p-8 border-2 border-amber-100/50 flex justify-between items-start gap-6 group">
+                                                    <div className="flex-1">
+                                                        <div className="flex items-center gap-2 mb-4">
+                                                            <div className="p-1.5 bg-amber-500 rounded-lg text-white">
+                                                                <Headphones className="h-4 w-4" />
+                                                            </div>
+                                                            <span className="text-[10px] font-black uppercase tracking-widest text-amber-600">Audio Script</span>
+                                                        </div>
+                                                        <p className="text-xl text-slate-700 font-medium italic leading-relaxed">"{block.text}"</p>
+                                                    </div>
+                                                    <div className="shrink-0 pt-1">
+                                                        <TextToSpeech text={block.text || ""} />
+                                                    </div>
+                                                </div>
+                                            );
+                                            if (block.type === 'table') return (
+                                                <div key={bIdx} className="overflow-hidden rounded-[2rem] border-2 border-slate-100 shadow-sm my-10 bg-white">
+                                                    <table className="w-full text-left border-collapse">
+                                                        <thead>
+                                                            <tr className="bg-slate-50 border-b-2 border-slate-100">
+                                                                {block.headers?.map((header, hIdx) => (
+                                                                    <th key={hIdx} className="p-6 text-sm font-black text-slate-900 uppercase tracking-widest">{header}</th>
+                                                                ))}
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {block.rows?.map((row, rIdx) => (
+                                                                <tr key={rIdx} className="border-b border-slate-50 last:border-0 hover:bg-slate-50/50 transition-colors">
+                                                                    {row.map((cell, cIdx) => (
+                                                                        <td key={cIdx} className="p-6 text-lg font-medium text-slate-600">{cell}</td>
+                                                                    ))}
+                                                                </tr>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            );
                                             return null;
                                         })}
                                     </div>
