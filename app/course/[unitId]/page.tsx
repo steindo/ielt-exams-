@@ -5,7 +5,7 @@ import { courseUnits } from "@/data/course_content";
 import ExerciseEngine from "@/components/ExerciseEngine";
 import TextToSpeech from "@/components/TextToSpeech";
 import { useState } from "react";
-import { ArrowLeft, BookOpen, Brain, PenTool, CheckCircle, Headphones, Mic, Keyboard } from "lucide-react";
+import { ArrowLeft, BookOpen, Brain, PenTool, Headphones, Mic, Keyboard } from "lucide-react";
 
 export default function UnitPage() {
     const params = useParams();

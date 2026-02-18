@@ -1,6 +1,6 @@
 "use client";
 
-import { Volume2, VolumeX, Play, Pause } from "lucide-react";
+import { VolumeX, Play, Pause } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 interface TextToSpeechProps {
