@@ -194,7 +194,35 @@ export const courseUnits: CourseUnit[] = [
             }
         }
     },
-    { id: "unit-3", number: 3, title: "Unit 3: Recognising Paraphrase", description: "Focus: Distractors and Paraphrasing.", category: "listening", pageRange: "22-24", topics: { grammar: "Synonyms", vocabulary: "Academic" }, exercises: { grammar: [], vocabulary: [] } },
+    {
+        id: "unit-3",
+        number: 3,
+        title: "Unit 3: Getting to Know the Test",
+        description: "Focus: Section 2 Monologues - Places and directions, Labelling a map.",
+        category: "listening",
+        pageRange: "23-26",
+        topics: {
+            grammar: "Prepositions of place, Directions",
+            vocabulary: "Landmarks, Maps, Orientation",
+        },
+        lessons: [
+            {
+                title: "1 Labelling a map",
+                content: [
+                    { type: 'text', text: "In Section 2 of the Listening test, you often hear a monologue about a place. You need to identify locations using landmarks and directions." },
+                    { type: 'tip', text: "Look for the entrance and existing landmarks to orient yourself." }
+                ]
+            }
+        ],
+        exercises: {
+            grammar: [],
+            vocabulary: [],
+            listening: {
+                transcript: "",
+                questions: []
+            }
+        }
+    },
     { id: "unit-4", number: 4, title: "Unit 4: Places and Directions", description: "Focus: Maps and Directions.", category: "listening", pageRange: "25-28", topics: { grammar: "Prepositions", vocabulary: "Directions" }, exercises: { grammar: [], vocabulary: [] } },
     { id: "unit-5", number: 5, title: "Unit 5: Actions and Processes", description: "Focus: Flow-charts and Processes.", category: "listening", pageRange: "29-32", topics: { grammar: "Passive Voice", vocabulary: "Verbs of motion" }, exercises: { grammar: [], vocabulary: [] } },
     { id: "unit-6", number: 6, title: "Unit 6: Attitude and Opinion", description: "Focus: Identifying opinions.", category: "listening", pageRange: "33-35", topics: { grammar: "Modals", vocabulary: "Opinion verbs" }, exercises: { grammar: [], vocabulary: [] } },
