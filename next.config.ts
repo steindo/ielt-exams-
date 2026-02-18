@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   // keeping it clean.
 
   // Reverting distDir to default '.next' to restore standard Vercel integration
+  // Force deployment update: 2026-02-18
 };
 
 export default nextConfig;
