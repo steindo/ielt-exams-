@@ -64,7 +64,7 @@ export default function SpeakingModule() {
                     <Card title="Current Prompt: Cue Card" className="bg-accent/5 border-accent/20">
                         <div className="space-y-4">
                             <p className="text-xl font-bold italic leading-relaxed">
-                                "Describe a place you visited that had a significant impact on you."
+                                &quot;Describe a place you visited that had a significant impact on you.&quot;
                             </p>
                             <div className="pl-6 border-l-2 border-accent text-muted-foreground space-y-2">
                                 <p>You should say:</p>
@@ -101,23 +101,23 @@ export default function SpeakingModule() {
                                     <Mic className="h-10 w-10" />
                                 </div>
                                 <p className="text-lg font-medium text-muted-foreground mb-8">Click start when you are ready to speak.</p>
-                                <div className="flex gap-4">
+
+                                {!hasRecording ? (
                                     <button
                                         onClick={startRecording}
                                         className="flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-bold text-white shadow-lg hover:bg-primary/90 transition-all hover:scale-105"
                                     >
                                         <Mic className="h-5 w-5" /> Start Recording
                                     </button>
-                                    {hasRecording && (
-                                        <button
-                                            onClick={analyzeSpeech}
-                                            disabled={isAnalyzing}
-                                            className="flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-lg font-bold text-background shadow-lg hover:bg-accent/90 transition-all hover:scale-105 disabled:opacity-50"
-                                        >
-                                            {isAnalyzing ? "Analyzing..." : "Analyze Recording"} <BarChart3 className="h-5 w-5" />
-                                        </button>
-                                    )}
-                                </div>
+                                ) : (
+                                    <button
+                                        onClick={analyzeSpeech}
+                                        disabled={isAnalyzing}
+                                        className="flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-lg font-bold text-background shadow-lg hover:bg-accent/90 transition-all hover:scale-105 disabled:opacity-50"
+                                    >
+                                        {isAnalyzing ? "Analyzing..." : "Analyze Recording"} <BarChart3 className="h-5 w-5" />
+                                    </button>
+                                )}
                             </div>
                         )}
                     </div>

@@ -58,6 +58,11 @@ export default function ReadingModule() {
                 </div>
 
                 <div>
+                    <div className="prose prose-slate max-w-none">
+                        <p className="mb-4 text-lg leading-relaxed text-slate-700">
+                            The concept of &quot;emotional intelligence&quot; has gained significant traction in recent years...
+                        </p>
+                    </div>
                     <ExerciseEngine
                         questions={readingQuestions}
                         onComplete={handleComplete}

@@ -1,6 +1,7 @@
 "use client";
 
-import { BookOpen, GraduationCap, LayoutDashboard, Crown, FileText } from "lucide-react";
+import { Home, LineChart, BookOpen, Crown, GraduationCap } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
     return (
@@ -10,19 +11,19 @@ export default function Navbar() {
                     <GraduationCap className="h-6 w-6" />
                     <span>IELTS & TOEFL Prep</span>
                 </div>
-                <div className="flex gap-6 text-sm font-medium">
-                    <a href="/dashboard" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                        <LayoutDashboard className="h-4 w-4" /> Dashboard
-                    </a>
-                    <a href="/exercises" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                        <BookOpen className="h-4 w-4" /> Exercices
-                    </a>
-                    <a href="/exercises/academic" className="flex items-center gap-2 text-amber-600 hover:text-amber-700 transition-colors font-bold">
+                <div className="flex gap-1 h-full items-center">
+                    <Link href="/dashboard" className="flex items-center gap-2 text-slate-600 hover:text-amber-600 transition-colors">
+                        <Home className="h-4 w-4" /> Dashboard
+                    </Link>
+                    <Link href="/exercises" className="flex items-center gap-2 text-slate-600 hover:text-amber-600 transition-colors">
+                        <LineChart className="h-4 w-4" /> Exercises
+                    </Link>
+                    <Link href="/exercises/academic" className="flex items-center gap-2 text-amber-600 hover:text-amber-700 transition-colors font-bold">
                         <Crown className="h-4 w-4" /> Premium Harvard/Oxford
-                    </a>
-                    <a href="/course" className="flex items-center gap-2 text-slate-900 hover:text-slate-700 transition-colors font-bold border-l pl-6 border-slate-300">
+                    </Link>
+                    <Link href="/course" className="flex items-center gap-2 text-slate-900 hover:text-slate-700 transition-colors font-bold border-l pl-6 border-slate-300">
                         <BookOpen className="h-4 w-4" /> My Course
-                    </a>
+                    </Link>
                 </div>
             </div>
         </nav>

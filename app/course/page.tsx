@@ -1,6 +1,6 @@
 "use client";
 
-import { Book, Star, Lock, Unlock, ArrowRight, CheckCircle, MapPin } from "lucide-react";
+import { Book, Star, Lock, ArrowRight, CheckCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { courseUnits } from "@/data/course_content";
 
@@ -52,8 +52,8 @@ export default function CourseMapPage() {
                             >
                                 {/* Node on the line */}
                                 <div className={`absolute left-0 top-6 h-16 w-16 rounded-full border-4 flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110 shadow-lg ${isCompleted ? 'bg-green-500 border-green-200 text-white' :
-                                        isActive ? 'bg-amber-500 border-amber-200 text-white animate-pulse' :
-                                            'bg-white border-slate-200 text-slate-300'
+                                    isActive ? 'bg-amber-500 border-amber-200 text-white animate-pulse' :
+                                        'bg-white border-slate-200 text-slate-300'
                                     }`}>
                                     {isCompleted ? <CheckCircle className="h-8 w-8" /> :
                                         !isUnlocked ? <Lock className="h-6 w-6" /> :
@@ -65,8 +65,8 @@ export default function CourseMapPage() {
                                 <div
                                     onClick={() => isUnlocked && router.push(`/course/${unit.id}`)}
                                     className={`bg-white p-6 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${isActive ? 'border-amber-500 shadow-xl shadow-amber-100 ring-4 ring-amber-50 transform scale-[1.02]' :
-                                            isCompleted ? 'border-green-500 shadow-md' :
-                                                'border-slate-100 shadow-sm hover:border-slate-300 hover:shadow-md'
+                                        isCompleted ? 'border-green-500 shadow-md' :
+                                            'border-slate-100 shadow-sm hover:border-slate-300 hover:shadow-md'
                                         }`}
                                 >
                                     <div className="flex justify-between items-start mb-2">

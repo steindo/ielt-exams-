@@ -5,12 +5,24 @@ import { Sparkles, Loader2, CheckCircle, XCircle } from "lucide-react";
 import Card from "@/components/Card";
 import { EXERCISE_GENERATOR_CONFIG } from "@/lib/exercise-generator-config";
 
+interface GeneratedExercise {
+    content: string;
+    // add other fields if known
+}
+
+interface GenerationResult {
+    count: number;
+    level: string;
+    topic: string;
+    exercises: GeneratedExercise[];
+}
+
 export default function ExerciseGeneratorAdmin() {
     const [selectedLevel, setSelectedLevel] = useState<string>("A1");
     const [selectedTopic, setSelectedTopic] = useState<string>("");
     const [count, setCount] = useState<number>(10);
     const [isGenerating, setIsGenerating] = useState(false);
-    const [result, setResult] = useState<any>(null);
+    const [result, setResult] = useState<GenerationResult | null>(null);
     const [error, setError] = useState<string>("");
 
     const handleGenerate = async () => {

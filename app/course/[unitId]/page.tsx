@@ -37,7 +37,7 @@ export default function UnitPage() {
 
     // Set initial active tab if current one is not valid
     if (!tabs.find(t => t.id === activeTab)) {
-        if (tabs.length > 0) setActiveTab(tabs[0].id as any);
+        if (tabs.length > 0) setActiveTab(tabs[0].id as 'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking');
     }
 
     return (
@@ -62,7 +62,7 @@ export default function UnitPage() {
                     {tabs.map(tab => (
                         <button
                             key={tab.id}
-                            onClick={() => setActiveTab(tab.id as any)}
+                            onClick={() => setActiveTab(tab.id as 'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking')}
                             className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold text-lg shadow-lg transition-all whitespace-nowrap ${activeTab === tab.id
                                 ? 'bg-amber-500 text-white scale-105'
                                 : 'bg-white text-slate-600 hover:bg-slate-50'
@@ -128,7 +128,7 @@ export default function UnitPage() {
 
                                 <div className="prose prose-slate max-w-none italic text-slate-600 border-t pt-4">
                                     <span className="text-xs font-bold text-slate-400 uppercase mb-2 block">Transcript Preview</span>
-                                    "{unit.exercises.listening.transcript}"
+                                    &quot;{unit.exercises.listening.transcript}&quot;
                                 </div>
                             </div>
                             <div>

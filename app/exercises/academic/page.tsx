@@ -1,6 +1,6 @@
 "use client";
 
-import { Crown, BookOpen, ArrowLeft, Brain, GraduationCap, Library } from "lucide-react";
+import { Crown, ArrowLeft, Brain, GraduationCap, Library } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ExerciseEngine from "@/components/ExerciseEngine";
 // Import the massive new dataset
@@ -31,8 +31,8 @@ export default function UniversityPrepPage() {
 
             {/* Header Section */}
             <div className="mb-12 text-center">
-                <h1 className="text-5xl font-extrabold tracking-tight text-foreground mb-4">
-                    Programme Intensif <span className="text-amber-600">6 Mois</span>
+                <h1 className="text-4xl font-serif font-bold text-amber-900 mb-4">
+                    Harvard &amp; Oxford <span className="text-amber-600">Premium Prep</span>
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                     Votre feuille de route vers Oxford, Harvard et Cambridge. Ce module couvre la grammaire d'élite,
@@ -80,8 +80,9 @@ export default function UniversityPrepPage() {
                             <Crown className="h-6 w-6 text-amber-500" />
                             Session Intensive (6 Mois)
                         </h2>
-                        <p className="text-slate-500 mt-1">
-                            Banque de questions: <strong>{allUniversityExercises.length} items haute-précision</strong>
+                        <p className="text-slate-600 mt-2">
+                            Master the &apos;Oxbridge&apos; style of critical thinking and argumentation.
+                            These exercises are designed to push your logic and vocabulary to the C2 level.
                         </p>
                     </div>
 

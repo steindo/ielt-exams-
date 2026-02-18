@@ -5,13 +5,12 @@ import { useState, useEffect, useRef } from "react";
 
 interface TextToSpeechProps {
     text: string;
-    autoPlay?: boolean;
 }
 
-export default function TextToSpeech({ text, autoPlay = false }: TextToSpeechProps) {
+export default function TextToSpeech({ text }: TextToSpeechProps) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
-    const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null);
+    const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
     useEffect(() => {
         const u = new SpeechSynthesisUtterance(text);
@@ -23,7 +22,7 @@ export default function TextToSpeech({ text, autoPlay = false }: TextToSpeechPro
             setIsPaused(false);
         };
 
-        setUtterance(u);
+        utteranceRef.current = u;
 
         return () => {
             window.speechSynthesis.cancel();
@@ -31,14 +30,14 @@ export default function TextToSpeech({ text, autoPlay = false }: TextToSpeechPro
     }, [text]);
 
     const handlePlay = () => {
-        if (!utterance) return;
+        if (!utteranceRef.current) return;
 
         if (isPaused) {
             window.speechSynthesis.resume();
             setIsPaused(false);
             setIsPlaying(true);
         } else {
-            window.speechSynthesis.speak(utterance);
+            window.speechSynthesis.speak(utteranceRef.current);
             setIsPlaying(true);
         }
     };

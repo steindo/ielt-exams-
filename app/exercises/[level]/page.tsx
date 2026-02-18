@@ -17,7 +17,10 @@ export default function ExercisesPage() {
         return (
             <div className="container mx-auto px-4 py-12 text-center">
                 <h1 className="text-3xl font-bold text-foreground">Niveau non trouvé</h1>
-                <p className="mt-4 text-muted-foreground">Le niveau {level} n'existe pas.</p>
+                <p className="text-xl text-muted-foreground mt-4 max-w-2xl mx-auto">
+                    Master English from A1 to C2 with our adaptive exercises.
+                    Each level is designed to push your skills to the limit.
+                </p>
                 <button
                     onClick={() => router.push("/exercises")}
                     className="mt-8 rounded-lg bg-primary px-6 py-3 font-bold text-white"
