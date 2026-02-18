@@ -149,31 +149,30 @@ export const courseUnits: CourseUnit[] = [
         id: "unit-2",
         number: 2,
         title: "Unit 2: Following a Conversation",
-        description: "Focus: Identifying speakers, function, and understanding categories.",
+        description: "Focus: Steps of a process and Understanding distractors.",
         category: "listening",
         pageRange: "18-21",
         topics: {
-            grammar: "Present Simple & Continuous",
-            vocabulary: "Personal Information, Occupations, Family",
+            grammar: "Sequencers (First, Next, Finally)",
+            vocabulary: "Party planning, Travel, Reservations",
         },
         lessons: [
             {
-                title: "1 Identifying the speakers",
+                title: "1 Identifying the steps of a process",
                 content: [
-                    { type: 'text', text: "For Sections 1 and 3, each speaker will have a different voice to help you tell them apart (e.g. male/female; younger/older). Both speakers will talk equally, and you will hear answers from both speakers." },
-                    { type: 'text', text: "For Section 1, there is normally one person who has to find out information from the other." },
-                    { type: 'tip', text: "In the IELTS Listening paper, Sections 1 and 3 are conversations between two or three people. Sections 2 and 4 are monologues with only one main speaker." },
-                    { type: 'text', text: "Sometimes, you may hear another speaker introducing the talk or asking questions. You need to listen to both speakers carefully." }
+                    { type: 'text', text: "In this section, you will learn to identify the order of events in a conversation or monologue. Look for signposting words that indicate a sequence." },
+                    { type: 'bullet', text: "First / First of all" },
+                    { type: 'bullet', text: "Then / Next / After that" },
+                    { type: 'bullet', text: "Finally / The last thing is" },
+                    { type: 'tip', text: "Before you listen, look at the steps and try to imagine the logical order. This will help you follow the talk more easily." }
                 ]
             },
             {
-                title: "2 Identifying function",
+                title: "2 Understanding distractors",
                 content: [
-                    { type: 'text', text: "Each speaker has a specific purpose in mind when they talk. We say their language has a function. We use different language for different functions." },
-                    { type: 'bullet', text: "Expressing agreement or disagreement." },
-                    { type: 'bullet', text: "Correcting information (Self-correction or correcting others)." },
-                    { type: 'bullet', text: "Expressing preferences or doubts." },
-                    { type: 'tip', text: "You will hear native speaker accents from several English-speaking countries in the test. These may include British, American, Canadian, Australian and New Zealand accents." }
+                    { type: 'text', text: "Distractors are the incorrect answers to a question. They are designed to test if you are following the details of the conversation." },
+                    { type: 'text', text: "A common type of distractor is when a speaker corrects themselves or changes their mind." },
+                    { type: 'tip', text: "Listen for words like 'actually', 'no, wait', 'sorry', or 'instead'. These often signal a correction or a change in the information provided." }
                 ]
             }
         ],
@@ -181,22 +180,15 @@ export const courseUnits: CourseUnit[] = [
             grammar: [],
             vocabulary: [],
             listening: {
-                transcript: "Speaker A: 'I'd like to ask about the course.' Speaker B: 'Certainly. Do you have any experience?' Speaker A: 'Yes, 3 years.'",
+                transcript: "Speaker A: 'Let's order pizza.' Speaker B: 'We always do that. How about a barbecue?' Speaker A: 'Too much effort. Let's stick with pizza.'",
                 questions: [
                     {
-                        id: "u2-l1",
+                        id: "u2-distractor-1",
                         type: "MCQ",
-                        question: "Who is asking for information?",
-                        options: ["Speaker A", "Speaker B", "Both"],
+                        question: "What did they finally decide to eat?",
+                        options: ["Pizza", "Barbecue", "Nothing"],
                         correctAnswer: 0,
-                        explanation: "Speaker A starts with 'I'd like to ask...'."
-                    },
-                    {
-                        id: "u2-l2",
-                        type: "GapFill",
-                        question: "Experience: ___ years.",
-                        correctAnswer: "3",
-                        explanation: "Speaker A mentioned 3 years."
+                        explanation: "Although a barbecue was suggested, they decided to 'stick with pizza'."
                     }
                 ]
             }
