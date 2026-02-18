@@ -5,7 +5,7 @@ import { courseUnits } from "@/data/course_content";
 import ExerciseEngine from "@/components/ExerciseEngine";
 import TextToSpeech from "@/components/TextToSpeech";
 import { useState } from "react";
-import { ArrowLeft, BookOpen, Brain, PenTool, Headphones, Mic, Keyboard } from "lucide-react";
+import { ArrowLeft, BookOpen, Brain, PenTool, Headphones, Mic, Keyboard, ArrowRight } from "lucide-react";
 
 export default function UnitPage() {
     const params = useParams();
@@ -26,7 +26,6 @@ export default function UnitPage() {
     if (!unit) return <div className="p-10 text-center text-xl">Unit not found</div>;
 
     // Determine available tabs based on unit content
-    const tabs = [];
     const tabs = [
         { id: 'lesson', label: 'Lesson', icon: BookOpen },
         { id: 'grammar', label: 'Grammar', icon: Brain },
