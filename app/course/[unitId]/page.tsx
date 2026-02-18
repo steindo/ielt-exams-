@@ -13,7 +13,7 @@ export default function UnitPage() {
     const unitId = params.unitId as string;
     const unit = courseUnits.find(u => u.id === unitId);
 
-    const [activeTab, setActiveTab] = useState<'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking'>('grammar');
+    const [activeTab, setActiveTab] = useState<'lesson' | 'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking'>('lesson');
     const [showTranscript, setShowTranscript] = useState(false);
 
     // Define handler for exercise completion
@@ -27,18 +27,19 @@ export default function UnitPage() {
 
     // Determine available tabs based on unit content
     const tabs = [];
+    const tabs = [
+        { id: 'lesson', label: 'Lesson', icon: BookOpen },
+        { id: 'grammar', label: 'Grammar', icon: Brain },
+        { id: 'vocabulary', label: 'Vocabulary', icon: PenTool },
+    ];
     if (unit.exercises.listening) tabs.push({ id: 'listening', icon: Headphones, label: 'Listening' });
     if (unit.exercises.reading) tabs.push({ id: 'reading', icon: BookOpen, label: 'Reading' });
     if (unit.exercises.writing) tabs.push({ id: 'writing', icon: Keyboard, label: 'Writing' });
     if (unit.exercises.speaking) tabs.push({ id: 'speaking', icon: Mic, label: 'Speaking' });
 
-    // Always include Grammar & Vocab as they are foundational
-    tabs.push({ id: 'grammar', icon: Brain, label: 'Grammar' });
-    tabs.push({ id: 'vocabulary', icon: PenTool, label: 'Vocabulary' });
-
     // Set initial active tab if current one is not valid
     if (!tabs.find(t => t.id === activeTab)) {
-        if (tabs.length > 0) setActiveTab(tabs[0].id as 'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking');
+        if (tabs.length > 0) setActiveTab(tabs[0].id as 'lesson' | 'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking');
     }
 
     return (
@@ -63,7 +64,7 @@ export default function UnitPage() {
                     {tabs.map(tab => (
                         <button
                             key={tab.id}
-                            onClick={() => setActiveTab(tab.id as 'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking')}
+                            onClick={() => setActiveTab(tab.id as 'lesson' | 'grammar' | 'vocabulary' | 'reading' | 'listening' | 'writing' | 'speaking')}
                             className={`flex items-center gap-3 px-6 py-4 rounded-xl font-bold text-lg shadow-lg transition-all whitespace-nowrap ${activeTab === tab.id
                                 ? 'bg-amber-500 text-white scale-105'
                                 : 'bg-white text-slate-600 hover:bg-slate-50'
@@ -82,6 +83,77 @@ export default function UnitPage() {
                             {activeTab} Focus
                         </span>
                     </h2>
+
+                    {activeTab === 'lesson' && (
+                        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                            <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl border border-amber-100 shadow-sm mb-8">
+                                <h2 className="text-3xl font-bold text-amber-900 mb-4">{unit.title}</h2>
+                                <p className="text-amber-800 opacity-90 text-lg leading-relaxed font-medium">
+                                    Welcome to this unit. Follow the textbook lessons below to build your core foundations before moving to practice.
+                                </p>
+                            </div>
+
+                            {unit.lessons && unit.lessons.length > 0 ? (
+                                <div className="space-y-12">
+                                    {unit.lessons.map((lesson, idx) => (
+                                        <div key={idx} className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100/80 relative overflow-hidden group">
+                                            <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                            <h3 className="text-2xl font-bold text-slate-800 mb-8 flex items-center gap-4">
+                                                <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-600 text-lg font-black font-heading">
+                                                    {idx + 1}
+                                                </span>
+                                                {lesson.title}
+                                            </h3>
+                                            <div className="space-y-6">
+                                                {lesson.content.map((p, pIdx) => (
+                                                    <div key={pIdx}>
+                                                        {p.type === 'header' && <h4 className="text-xl font-bold text-slate-800 mt-8 mb-4 border-b-2 border-slate-50 pb-2">{p.text}</h4>}
+                                                        {p.type === 'text' && <p className="text-slate-600 leading-relaxed text-lg">{p.text}</p>}
+                                                        {p.type === 'bullet' && (
+                                                            <div className="flex gap-4 items-start text-slate-600 my-4 pl-2">
+                                                                <div className="h-2 w-2 rounded-full bg-amber-400 mt-2.5 flex-shrink-0 animate-pulse" />
+                                                                <p className="text-lg font-medium">{p.text}</p>
+                                                            </div>
+                                                        )}
+                                                        {p.type === 'tip' && (
+                                                            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100 my-8 shadow-sm">
+                                                                <div className="flex items-center gap-3 text-blue-800 font-black mb-3 text-sm tracking-wider uppercase">
+                                                                    <div className="p-2 bg-blue-100 rounded-lg">
+                                                                        <Brain className="h-5 w-5" />
+                                                                    </div>
+                                                                    Test Tip
+                                                                </div>
+                                                                <p className="text-blue-700 text-lg leading-relaxed italic">{p.text}</p>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-2xl flex items-center justify-between group cursor-pointer hover:bg-slate-800 transition-colors"
+                                        onClick={() => setActiveTab('listening')}>
+                                        <div>
+                                            <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-1">Up Next</p>
+                                            <h4 className="text-2xl font-bold">Start Listening Exercises</h4>
+                                        </div>
+                                        <div className="h-14 w-14 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <ArrowRight className="h-8 w-8" />
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="text-center py-24 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+                                    <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <BookOpen className="h-10 w-10 text-slate-300" />
+                                    </div>
+                                    <h3 className="text-2xl font-bold text-slate-400">Lessons coming soon...</h3>
+                                    <p className="text-slate-400 text-lg max-w-md mx-auto">We are currently digitizing the full theory for this unit from the textbook.</p>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     {activeTab === 'grammar' && (
                         <div className="space-y-6">
