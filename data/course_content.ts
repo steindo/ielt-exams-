@@ -223,9 +223,80 @@ export const courseUnits: CourseUnit[] = [
             }
         }
     },
-    { id: "unit-4", number: 4, title: "Unit 4: Places and Directions", description: "Focus: Maps and Directions.", category: "listening", pageRange: "25-28", topics: { grammar: "Prepositions", vocabulary: "Directions" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-5", number: 5, title: "Unit 5: Actions and Processes", description: "Focus: Flow-charts and Processes.", category: "listening", pageRange: "29-32", topics: { grammar: "Passive Voice", vocabulary: "Verbs of motion" }, exercises: { grammar: [], vocabulary: [] } },
-    { id: "unit-6", number: 6, title: "Unit 6: Attitude and Opinion", description: "Focus: Identifying opinions.", category: "listening", pageRange: "33-35", topics: { grammar: "Modals", vocabulary: "Opinion verbs" }, exercises: { grammar: [], vocabulary: [] } },
+    {
+        id: "unit-5",
+        number: 5,
+        title: "Unit 5: Getting to Know the Test (Section 4)",
+        description: "Focus: Section 4 - Identifying main ideas and Note-taking in academic monologues.",
+        category: "listening",
+        pageRange: "31-34",
+        topics: {
+            grammar: "Passive voice, Signaling transitions",
+            vocabulary: "Academic terminology, Research, Evidence",
+        },
+        lessons: [
+            {
+                title: "1 Identifying main ideas",
+                content: [
+                    { type: 'text', text: "Section 4 is a long monologue on an academic subject. You must follow the overall argument by identifying the main ideas." },
+                    { type: 'tip', text: "Listen for 'Signpost words' that signal a change in topic (e.g., 'Moving on to...', 'Now, let's look at...')." }
+                ]
+            },
+            {
+                title: "2 Note-taking",
+                content: [
+                    { type: 'text', text: "Notes are often structured with headings and bullet points. They summarize the speaker's main points." },
+                    { type: 'tip', text: "Use the headings in the notes to predict what the speaker will say next." }
+                ]
+            }
+        ],
+        exercises: {
+            grammar: [],
+            vocabulary: [],
+            listening: {
+                transcript: "",
+                questions: []
+            }
+        }
+    },
+    {
+        id: "unit-6",
+        number: 6,
+        title: "Unit 6: Attitude and Opinion",
+        description: "Focus: Identifying attitudes, opinions, persuading, and suggesting.",
+        category: "listening",
+        pageRange: "35-38",
+        topics: {
+            grammar: "Sentence structures for proposing ideas",
+            vocabulary: "Emotion synonyms (worried, enthusiastic, etc.)",
+        },
+        lessons: [
+            {
+                title: "1 Identifying attitudes and opinions",
+                content: [
+                    { type: 'text', text: "In Listening Sections 1 and 3, speakers often try to reach an agreement. You must identify their level of agreement or disagreement." },
+                    { type: 'bullet', text: "Strong agreement: 'Exactly', 'I couldn't agree more'." },
+                    { type: 'bullet', text: "Partial agreement/Hesitation: 'I agree up to a point', 'I suppose so'." },
+                    { type: 'bullet', text: "Disagreement: 'I\'m not so sure', 'Actually, I don\'t like that idea'." }
+                ]
+            },
+            {
+                title: "2 Persuading and suggesting",
+                content: [
+                    { type: 'text', text: "Speakers use specific structures to propose ideas and try to convince others." },
+                    { type: 'bullet', text: "Structures: 'Why don't we...', 'How about...', 'Maybe we should...'." }
+                ]
+            }
+        ],
+        exercises: {
+            grammar: [],
+            vocabulary: [],
+            listening: {
+                transcript: "",
+                questions: []
+            }
+        }
+    },
     { id: "unit-7", number: 7, title: "Unit-7: Following a Lecture", description: "Focus: Academic lectures.", category: "listening", pageRange: "36-38", topics: { grammar: "Discourse Markers", vocabulary: "Academic" }, exercises: { grammar: [], vocabulary: [] } },
     { id: "unit-8", number: 8, title: "Unit-8: Contrasting Ideas", description: "Focus: Comparing and contrasting.", category: "listening", pageRange: "39-41", topics: { grammar: "Comparatives", vocabulary: "Linkers" }, exercises: { grammar: [], vocabulary: [] } },
 
